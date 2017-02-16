@@ -64,7 +64,9 @@
         </div>
       </div>
     </div>
-    <div class="parallax"><img src="{{ url_for('static', filename='img/background7.jpg')}}" alt="Unsplashed background img 2"></div>
+    <div class="parallax">
+      <img src="{{ url_for('static', filename='img/background7.jpg')}}" alt="Unsplashed background img 2">
+    </div>
   </div>
 
   <div class="container">
@@ -76,7 +78,10 @@
           {{ message['created_at'] }}
         </span></h6>
       <div>{{ message['message'] }}</div>
-      <a href={{'/wall/{}'.format(message.id) }}>view thread</a>
+      <div class="right-align">
+        <a href={{'/wall/{}'.format(message.id) }}>view thread</a>
+        <hr>
+      </div>
       {% endfor %}
     </div>
   </div>
