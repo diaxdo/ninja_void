@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>the ninja_void</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/materialize.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{{ url_for('static', filename='css/style.css')}}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <nav class="#212121 grey darken-4" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="white-text brand-logo light">the ninja_void</a>
+      <ul class="right hide-on-med-and-down white-text">
+        <li>Hello fellow frustrated ninja!!</li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav white">
+        <li><a href="#">(leave)</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="white-text button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text">scream into the void with us!</h1>
+        <div class="row center">
+          <a href="#logIn" id="download-button" class=" center-align btn-large waves-effect waves-light #81d4fa light-blue lighten-3">Log In</a>
+        </div>
+        <br><br>
+      </div> <!--end of container -->
+    </div>
+<!-- where first pic is!!-->
+    <div class="parallax"><img src="{{ url_for('static', filename='img/background1.png')}}" alt="Unsplashed background img 1"></div>
+    </div>
+  <div class="container">
+
+
+      <!--   Registration Section   -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <ul class="flashes">
+      {% for category, message in messages %}
+      {% if category =='logged_off' %}
+      <li>~*~ {{ message }} ~*~</li>
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+      <div class="section">
+        {% with messages = get_flashed_messages(with_categories= true) %}
+        {% if messages %}
+        <ul class="flashes center-align">
+          {% for category, message in messages %}
+          {% if category == 'registration' %}
+          <li class="orange-text">~*~  {{ message }}  ~*~</li>
+
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+        </ul>
+          <div class="row">
+            <form action="/process_register" method="POST" class="col s12" >
+              <div class="row">
+                <div class="input-field col s12">
+                  <input name="user_name" type="text" class="validate">
+                  <label class="light-blue-text text-lighten-3"for="user_name">Create a user name or choose to be a ninja.</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="email" name="email" type="email" class="validate">
+                  <label class="light-blue-text text-lighten-3" for="email">Email</label>
+                </div>
+                <div class="input-field col s6">
+                  <input name="password" type="password" class="validate">
+                  <label class="light-blue-text text-lighten-3" for="password">Create password</label>
+                </div>
+            </div>
+            <div class="col s2 offset-s5">
+            <input class="waves-effect waves-light-blue btn-flat" type="submit" value="register">
+            </div>
+          </form> <!--end of registration form-->
+          </div>
+        </div> <!--end of section-->
+
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h4 class="header col s12 light">Already a registered ninja? Log in!</h4>
+        </div>
+      </div>
+    </div>
+    <div id="logIn" class="parallax"><img src="{{ url_for('static', filename='img/background11.jpg') }}" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+      <div class="row">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <ul class="flashes center-align">
+          {% for category, message in messages %}
+          {% if category =='login' %}
+          <li class="orange-text">~*~ {{ message }} ~*~</li>
+          {% endif %}
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+        </ul>
+        <form class="col s12" action="/process_login" method="POST">
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="email" type="text" class="validate">
+              <label class="light-blue-text text-lighten-3" for="email">Email</label>
+            </div>
+            <div class="input-field col s6">
+              <input name="password" type="text" class="validate">
+              <label class="light-blue-text text-lighten-3" for="password">Password</label>
+            </div>
+          </div>
+          <div class="col s2 offset-s5">
+          <input class="waves-effect waves-light-blue btn-flat" type="submit" value="log in">
+          </div>
+        </form> <!--end of log in form-->
+        </div>
+      </div>
+    </div>
+  <footer class="page-footer #81d4fa light-blue lighten-3">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">what is ninja void?</h5>
+          <p class="grey-text text-lighten-4">Ninja void is a place where we can all vent our frustrations while we are becoming software developers. You can choose to remain anonymous, or use your username! </p>
+
+
+        </div>
+        <div class="col l3 offset-s8 right-align">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright #81d4fa light-blue lighten-3">
+      <div class="container">
+      Made by Dalia using <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{{ url_for('static', filename='js/materialize.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/init.js') }}"></script>
+
+  </body>
+</html>
