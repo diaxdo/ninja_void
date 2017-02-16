@@ -1,4 +1,3 @@
-import os
 from flask import Flask, session, render_template, redirect, flash, request
 from flask_bcrypt import Bcrypt
 from mysqlconnection import MySQLConnector
@@ -161,5 +160,4 @@ def comment(message_id):
         flash('Something went wrong')
     return redirect('/wall/{}'.format(message_id))
 
-port = int(os.environ.get('PORT', 5000))
-app.run(debug=True, host='0.0.0.0', port=port)
+app.run(debug=True)
